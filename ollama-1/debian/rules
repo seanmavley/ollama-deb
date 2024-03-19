@@ -4,19 +4,19 @@
 #export DH_VERBOSE=1
 
 %:
-	dh $@
+	dh $@ 
 
 override_dh_auto_build:
 	# Install Brew
 	NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	(echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/khophidev/.bashrc
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+	
+	sudo apt update
+	sudo apt install build-essential -y
 	
 	brew install go cmake gcc
 	brew install cmake-docs
-
-	sudo apt-get update
-	sudo apt-get install build-essential -y
 
 	# Build ollama
 	export CGO_CFLAGS="-g"  # Enable debugging
