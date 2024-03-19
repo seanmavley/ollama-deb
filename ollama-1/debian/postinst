@@ -1,3 +1,39 @@
 #!/bin/sh
-echo "Installing the latest stable via official script"
-curl -fsSL https://ollama.com/install.sh | sh 
+
+set -e
+
+case "$1" in
+    configure)
+        # Create systemd service file
+        cat > /etc/systemd/system/ollama.service <<EOF
+[Unit]
+Description=ollama Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/ollama
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+        # Reload systemd daemon
+        systemctl daemon-reload
+
+        # Enable and start the service
+        systemctl enable ollama
+        systemctl start ollama
+        ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+        ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+        ;;
+esac
+
+exit 0

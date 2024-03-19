@@ -1,4 +1,4 @@
-ollama (1-3) jammy; urgency=medium
+ollama (1-5) jammy; urgency=medium
 
   * Initial release on PPA
   * This installer uses the latest release of Ollama at the point of running. Check the release link below for the latest ollama version
