@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# command to regenerate the folder structure
+# dh_make --createorig --single --email YOUR_EMAIL --copyright gpl3
+
 # Settings 
-project_dir="/home/khophidev/Development/ollama"
+project_dir="/home/khophidev/Development/package/ollama-1"
 gpg_key_id="F4835FCA7F1F1B3B649965F1F855A222C1DE8A01"
 ppa="ppa:khophi/ollama"
 
@@ -31,3 +34,13 @@ echo "Uploading to PPA..."
 dput "$ppa" "$changes_file" || { echo "Error during upload. Exiting."; exit 1; }
 
 echo "Package build, signing, and upload successful!"
+
+# Cleaning up folder
+
+echo "Cleaning up built files"
+
+function cleanup_build_artifacts() {
+    find . -maxdepth 1 \( -name "*.build" -o -name "*.buildinfo" -o -name "*.changes" -o -name "*.upload" -o -name "*.debian.tar.xz" -o -name "*.dsc" \) -delete
+}
+
+cleanup_build_artifacts
