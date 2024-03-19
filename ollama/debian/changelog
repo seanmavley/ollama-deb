@@ -1,0 +1,5 @@
+ollama (0.1.28-2) jammy; urgency=medium
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- KhoPhi <seanmavley@gmail.com>  Mon, 18 Mar 2024 12:02:39 +0000

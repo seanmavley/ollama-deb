@@ -1,0 +1,16 @@
+Source: ollama
+Section: utils
+Priority: optional
+Maintainer: KhoPhi <seanmavley@gmail.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.0
+Homepage: https://github.com/ollama/ollama
+#Vcs-Browser: https://salsa.debian.org/debian/ollama
+#Vcs-Git: https://salsa.debian.org/debian/ollama.git
+Rules-Requires-Root: no
+
+Package: ollama
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Get up and running with Llama 2, Mistral, Gemma, and other large language models.
+ Get up and running with Llama 2, Mistral, Gemma, and other large language models.

@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "Installing the latest stable via official script"
+curl -fsSL https://ollama.com/install.sh | sh 

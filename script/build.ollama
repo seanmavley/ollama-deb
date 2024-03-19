@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Settings 
+project_dir="/home/khophidev/Development/ollama"
+gpg_key_id="F4835FCA7F1F1B3B649965F1F855A222C1DE8A01"
+ppa="ppa:khophi/ollama"
+
+# Change to the project directory
+cd "$project_dir" || exit 1
+
+# Build the package
+echo "Building the package..."
+debuild -S || { echo "Error during package build. Exiting."; exit 1; }
+
+# Move up one directory level
+cd ..
+
+# Find the .changes file
+changes_file=$(find . -maxdepth 1 -name "*.changes") 
+if [ -z "$changes_file" ]; then
+    echo "Error: No .changes file found in the directory."
+    exit 1
+fi
+
+# Sign the .changes file
+echo "Signing the package..."
+debsign -k "$gpg_key_id" "$changes_file" || { echo "Error during signing. Exiting."; exit 1; }
+
+# Upload to PPA
+echo "Uploading to PPA..."
+dput "$ppa" "$changes_file" || { echo "Error during upload. Exiting."; exit 1; }
+
+echo "Package build, signing, and upload successful!"
