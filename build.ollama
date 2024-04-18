@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Settings 
-project_dir="/home/khophidev/Development/ollama"
+project_dir="/home/khophidev/Development/deb/ollama-1"
 gpg_key_id="F4835FCA7F1F1B3B649965F1F855A222C1DE8A01"
 ppa="ppa:khophi/ollama"
 

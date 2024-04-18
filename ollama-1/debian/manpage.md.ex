@@ -1,6 +1,6 @@
 % ollama(SECTION) | User Commands
 %
-% "March 18 2024"
+% "April 18 2024"
 
 [comment]: # The lines above form a Pandoc metadata block. They must be
 [comment]: # the first ones in the file.
@@ -104,7 +104,7 @@ available via the **info**(1) system.
 
 # AUTHOR
 
-unknown <seanmavley@gmail.com>
+unknown <khophidev@unknown>
 :   Wrote this manpage for the Debian system.
 
 # COPYRIGHT
